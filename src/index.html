@@ -3,57 +3,69 @@
 
 <head>
     <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>trygve.dev</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Nanum+Gothic+Coding:wght@400;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script defer src='main.js'></script>
+    <script src="https://kit.fontawesome.com/5ada6c251b.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.svg">
 </head>
 
 <body>
-    <div id='container'>
-        <h2 id="title" class="text_shadows">trygve.dev</h2>
-        <p id="desc">
-            Web app developer with experience in the most
-            industry relevant and modern frameworks and libraries.
-        </p>
 
-        <div id="github">
-            <p id="githubDesc">Check out my work at GitHub!</p>
-            <button type="button" class="nes-btn" id="githubBtn">GitHub</button>
+    <section id="home" class="hidden">
+        <h1 class="home-title">trygve.dev</h1>
+        <p>developer with experience in the most modern and industry relevant frameworks and libraries</p>
+        <a href="#frameworks-languages"><i class="fa-solid fa-angles-down fa-2xl"></i></a>
+
+    </section>
+
+    <section id="frameworks-languages" class="hidden">
+        <h2>my preferred frameworks and languages</h2>
+        <div class="logos">
+            <div class="logo hidden">
+                <a href="https://www.w3schools.com/js/" target=”_blank”><img src="./images/js.png" width="50px"></a>
+            </div>
+            <div class="logo hidden">
+                <a href="https://www.w3schools.com/css/" target=”_blank”><img src="./images/css.png" width="50px"></a>
+            </div>
+            <div class="logo hidden">
+                <a href="https://www.w3schools.com/html/" target=”_blank”><img src="./images/html.svg" width="50px"></a>
+            </div>
+            <div class="logo hidden">
+                <a href="https://www.electronjs.org/" target=”_blank”><img src="./images/electron.png" width="50px"></a>
+            </div>
+            <div class="logo hidden">
+                <a href="https://reactjs.org/" target=”_blank”><img src="./images/react.png" width="50px"></a>
+            </div>
+            <div class="logo hidden">
+                <a href="https://firebase.google.com/" target=”_blank”><img src="./images/firebase.png"
+                        width="50px"></a>
+            </div>
+        </div>
+        <a href="#projects"><i class="fa-solid fa-angles-down fa-2xl"></i></a>
+
+    </section>
+
+    <section id="projects" class="hidden pageend">
+        <h2 class="projects-header">check out my projects</h2>
+        <div class="card-list">
+            <a href="https://github.com/TrygveDev/Centrl" target=”_blank”>
+                <div class="card hidden" id="card-centrl">centrl</div>
+            </a>
+            <a href="https://github.com/TrygveDev/Moist" target=”_blank”>
+                <div class="card hidden" id="card-moist">moist</div>
+            </a>
+            <a href="https://matswipe.trygve.dev" target=”_blank”>
+                <div class="card hidden" id="card-matswipe">matswipe</div>
+            </a>
+            <a href="https://bamboo.trygve.dev" target=”_blank”>
+                <div class="card hidden" id="card-bamboo">bamboo</div>
+            </a>
         </div>
 
-        <p id="badgesDesc">Click below to read more about my prefered frameworks and libraries:</p>
-        <div id="badges">
-            <a class="nes-badge">
-                <span class="is-primary" id="jsBtn">JS</span>
-            </a>
-            <a class="nes-badge">
-                <span class="is-success" id="cssBtn">CSS</span>
-            </a>
-            <a class="nes-badge">
-                <span class="is-warning" id="htmlBtn">HTML</span>
-            </a>
-            <a class="nes-badge">
-                <span class="is-error" id="elecBtn">ELECTRONJS</span>
-            </a>
-            <a class="nes-badge">
-                <span class="is-dark" id="reacBtn">REACTJS</span>
-            </a>
-            <a class="nes-badge">
-                <span class="is-error" id="fireBtn">FIREBASE</span>
-            </a>
-        </div>
-
-    </div>
+        <a href="#home"><i class="fa-solid fa-angles-up fa-2xl"></i></a>
+    </section>
+    <p class="copyright">&copy 2022 trygve.dev</p>
 </body>
-<script src='index.js'></script>
 
 </html>
