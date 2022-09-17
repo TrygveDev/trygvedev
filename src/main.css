@@ -32,14 +32,12 @@ body {
 /* Fade in animations */
 .hidden {
   opacity: 0;
-  filter: blur(5px);
   transform: translateX(-100%);
   transition: opacity 1s, filter 1s, transform 1s;
 }
 .show {
   transform: translateX(0);
   opacity: 1;
-  filter: blur(0);
 }
 
 /* Sections */
