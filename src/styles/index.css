@@ -1,6 +1,6 @@
 @font-face {
 	font-family: Poppins;
-	src: url();
+	src: url(../fonts/Poppins.ttf);
 }
 
 body {
@@ -9,9 +9,19 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: white;
+	background-color: rgb(25, 25, 25);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	user-select: none;
+	scroll-behavior: smooth;
 }
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }

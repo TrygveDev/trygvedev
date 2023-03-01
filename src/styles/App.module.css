@@ -1,20 +1,104 @@
 .container {
-	width: 100vw;
-	height: 100vh;
-	background-color: rgb(25, 25, 25);
+	min-height: 100vh;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	overflow-y: scroll;
+	scroll-snap-type: y mandatory;
 }
 
+section {
+	width: 79vw;
+	height: 100vh;
+	scroll-snap-align: start;
+}
+.header {
+	width: 100%;
+}
+
+h3 {
+	margin-left: 1em;
+}
+
+/* About */
+.aboutContainer {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: 40% 40%;
+	grid-template-rows: 200px 200px;
+	row-gap: 16px;
+	column-gap: 8px;
+	align-items: center;
+	margin-top: 6em;
+}
+.aboutContainer .education {
+	border-radius: 10px;
+	grid-column: 1;
+	grid-row: 1;
+	height: 100%;
+	width: 100%;
+}
+.aboutContainer .experience {
+	border-radius: 10px;
+	grid-column: 2;
+	grid-row: 1;
+	height: 100%;
+	width: 100%;
+}
+.aboutContainer .skills {
+	border-radius: 10px;
+	grid-column: 1;
+	grid-row: 2;
+	height: 100%;
+	width: 100%;
+}
+.aboutContainer .favfields {
+	border-radius: 10px;
+	grid-column: 2;
+	grid-row: 2;
+	height: 100%;
+	width: 100%;
+}
+
+.education ul li,
+.experience ul li {
+	list-style: none;
+}
+.education h5,
+.experience h5 {
+	margin: 0;
+	margin-top: 1em;
+	color: gray;
+}
+.education h4,
+.experience h4 {
+	margin: 0;
+	font-weight: 100;
+}
+
+.skills ul,
+.favfields ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+.skills ul li,
+.favfields ul li {
+	width: 120px;
+	height: 40px;
+	color: gray;
+}
+
+/* Projects */
 .cardContainer {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	gap: 8px;
-	width: 79%;
+	width: 100%;
 }
 
 .card {
@@ -70,4 +154,28 @@
 	width: calc(100% - 2px);
 	position: relative;
 	z-index: 2;
+}
+
+/* Contact */
+.contactContainer {
+	width: 100%;
+	margin-top: 6em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.contactContainer button {
+	margin-top: 1em;
+	width: 250px;
+	height: 75px;
+	border-radius: 10px;
+	border: 3px solid rgba(255, 255, 255, 0.06);
+	background-color: transparent;
+	color: white;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+.contactContainer button:hover {
+	background-color: rgba(255, 255, 255, 0.06);
 }
