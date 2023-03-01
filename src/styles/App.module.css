@@ -1,67 +1,109 @@
 .container {
-	min-height: 100vh;
-
+	width: 100vw;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	overflow-y: scroll;
 	scroll-snap-type: y mandatory;
 }
-
 section {
-	width: 79vw;
+	width: 50%;
 	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
 	scroll-snap-align: start;
 }
 .header {
-	width: 100%;
+	width: 30%;
+	height: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.content {
+	width: 70%;
+	height: 50%;
+	overflow: hidden;
 }
 
-h3 {
-	margin-left: 1em;
+/* Main header */
+.mainHeaderContainer {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+.mainHeader {
+	font-size: 5em;
+	margin: 0;
+	line-height: 1.3em;
+}
+.mainHeaderContainer p {
+	margin: 0;
+}
+
+.mainHeaderContainer button {
+	width: 200px;
+	height: 60px;
+	border-radius: 10px;
+	border: 2px solid grey;
+	background-color: transparent;
+	color: white;
+	font-size: 2em;
 }
 
 /* About */
-.aboutContainer {
+.about {
 	width: 100%;
-	height: 100%;
 	display: grid;
-	justify-content: center;
-	grid-template-columns: 40% 40%;
-	grid-template-rows: 200px 200px;
-	row-gap: 16px;
+	grid-template-columns: 47% 47%;
+	grid-template-rows: 48% 48%;
+	row-gap: 8px;
 	column-gap: 8px;
-	align-items: center;
-	margin-top: 6em;
 }
-.aboutContainer .education {
-	border-radius: 10px;
+
+.about h3 {
+	margin-left: 1em;
+}
+.education {
 	grid-column: 1;
 	grid-row: 1;
-	height: 100%;
-	width: 100%;
-}
-.aboutContainer .experience {
+	border: 2px solid rgba(255, 255, 255, 0.06);
 	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+}
+.experience {
 	grid-column: 2;
 	grid-row: 1;
-	height: 100%;
-	width: 100%;
-}
-.aboutContainer .skills {
+	border: 2px solid rgba(255, 255, 255, 0.06);
 	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+}
+.skills {
 	grid-column: 1;
 	grid-row: 2;
-	height: 100%;
-	width: 100%;
-}
-.aboutContainer .favfields {
+	border: 2px solid rgba(255, 255, 255, 0.06);
 	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+}
+.favfields {
 	grid-column: 2;
 	grid-row: 2;
-	height: 100%;
+	border: 2px solid rgba(255, 255, 255, 0.06);
+	border-radius: 10px;
 	width: 100%;
+	height: 100%;
+}
+.fullscreen {
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
 }
 
 .education ul li,
@@ -93,21 +135,46 @@ h3 {
 }
 
 /* Projects */
-.cardContainer {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 8px;
+.projects {
 	width: 100%;
+	display: grid;
+	grid-template-columns: 32% 32% 32%;
+	grid-template-rows: 48% 48%;
+	row-gap: 8px;
+	column-gap: 8px;
 }
-
 .card {
-	width: 300px;
-	height: 260px;
+	width: 100%;
+	height: 100%;
 	background-color: rgba(255, 255, 255, 0.1);
 	border-radius: 10px;
 	cursor: pointer;
 	position: relative;
+}
+
+.card:nth-child(1) {
+	grid-column: 1;
+	grid-row: 1;
+}
+.card:nth-child(2) {
+	grid-column: 2;
+	grid-row: 1;
+}
+.card:nth-child(3) {
+	grid-column: 3;
+	grid-row: 1;
+}
+.card:nth-child(4) {
+	grid-column: 1;
+	grid-row: 2;
+}
+.card:nth-child(5) {
+	grid-column: 2;
+	grid-row: 2;
+}
+.card:nth-child(6) {
+	grid-column: 3;
+	grid-row: 2;
 }
 
 .card:hover::before,
@@ -130,7 +197,7 @@ h3 {
 
 .card::before {
 	background: radial-gradient(
-		800px circle at var(--mouse-x) var(--mouse-y),
+		200px circle at var(--mouse-x) var(--mouse-y),
 		rgba(255, 255, 255, 0.06),
 		transparent 40%
 	);
@@ -156,26 +223,16 @@ h3 {
 	z-index: 2;
 }
 
-/* Contact */
-.contactContainer {
-	width: 100%;
-	margin-top: 6em;
+.cardContent {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	font-style: italic;
+	text-transform: lowercase;
 }
-.contactContainer button {
-	margin-top: 1em;
-	width: 250px;
-	height: 75px;
-	border-radius: 10px;
-	border: 3px solid rgba(255, 255, 255, 0.06);
-	background-color: transparent;
-	color: white;
-	font-size: 1.5em;
-	cursor: pointer;
+.cardContent h3 {
+	margin: 0;
 }
-.contactContainer button:hover {
-	background-color: rgba(255, 255, 255, 0.06);
-}
+
+/* Contact */
