@@ -144,8 +144,11 @@ section {
 .experience ul {
 	margin: 0;
 	padding: 0;
-	width: 80%;
+	width: fit-content;
 	animation: slidein 0.5s;
+}
+.education ul {
+	width: 80%;
 }
 .education ul li,
 .experience ul li {
@@ -195,19 +198,23 @@ section {
 }
 
 @keyframes slidein {
-	from {
+	0% {
 		transform: translateX(100%);
+		opacity: 0;
 	}
-	to {
+	100% {
+		opacity: 1;
 		transform: translateX(0);
 	}
 }
 
 @keyframes slideinleft {
-	from {
+	0% {
 		transform: translateX(-100%);
+		opacity: 0;
 	}
-	to {
+	100% {
+		opacity: 1;
 		transform: translateX(0);
 	}
 }
@@ -216,22 +223,30 @@ section {
 	animation: slideoutleft 0.5s !important;
 }
 @keyframes slideoutleft {
-	from {
+	0% {
 		transform: translateX(0);
+		opacity: 1;
 	}
-	to {
-		transform: translateX(-200%);
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-150%);
 	}
 }
 .slideoutright {
 	animation: slideoutright 0.5s !important;
 }
 @keyframes slideoutright {
-	from {
+	0% {
 		transform: translateX(0);
+		opacity: 1;
 	}
-	to {
-		transform: translateX(200%);
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(100%);
 	}
 }
 
