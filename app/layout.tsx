@@ -5,12 +5,12 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-export const rubik = Rubik({
+const rubik = Rubik({
 	subsets: ["latin"],
 	variable: "--font-rubik",
 });
 
-export const roboto = Roboto({
+const roboto = Roboto({
 	subsets: ["latin"],
 	weight: ["100", "300", "400", "500", "700", "900"],
 	variable: "--font-roboto",
