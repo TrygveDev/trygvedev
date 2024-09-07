@@ -1,7 +1,7 @@
 "use client";
 import { Fade, Slide } from "react-awesome-reveal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import {

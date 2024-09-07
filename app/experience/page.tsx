@@ -2,7 +2,7 @@
 import { Fade, Slide } from "react-awesome-reveal";
 import { ExperienceCard } from "./ExperienceCard";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Experience() {
@@ -18,7 +18,7 @@ export default function Experience() {
 							</span>
 						</h1>
 						<p className="text-sm text-muted-foreground">
-							Here's a glimpse of some of my most notable
+							Here&apos;s a glimpse of some of my most notable
 							experiences.
 						</p>
 					</div>

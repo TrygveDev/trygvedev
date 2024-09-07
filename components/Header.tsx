@@ -12,7 +12,6 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import React from "react";
-import { Fade, Slide } from "react-awesome-reveal";
 
 export const Header = () => {
 	const { theme, setTheme } = useTheme();
