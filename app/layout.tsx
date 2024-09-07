@@ -1,12 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { Roboto, Rubik } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+export const rubik = Rubik({
+	subsets: ["latin"],
+	variable: "--font-rubik",
+});
+
+export const roboto = Roboto({
+	subsets: ["latin"],
+	weight: ["100", "300", "400", "500", "700", "900"],
+	variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
 	title: "trygve.dev",
-	description: "Portfolio for trygve.dev",
+	description: "Hi, I'm Trygve👋",
 };
 
 export default function RootLayout({
@@ -15,8 +27,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>{children}</body>
+		<html
+			lang="en"
+			className={rubik.variable + " " + roboto.variable}
+			suppressHydrationWarning
+		>
+			<body>
+				<ThemeProvider attribute="class" defaultTheme="dark">
+					<Header />
+					{children}
+					<Footer />
+				</ThemeProvider>
+			</body>
 		</html>
 	);
 }
