@@ -1,24 +1,66 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Roboto, Rubik } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 
-const rubik = Rubik({
+const geistSans = Geist({
+	variable: "--font-geist-sans",
 	subsets: ["latin"],
-	variable: "--font-rubik",
 });
 
-const roboto = Roboto({
+const geistMono = Geist_Mono({
+	variable: "--font-geist-mono",
 	subsets: ["latin"],
-	weight: ["100", "300", "400", "500", "700", "900"],
-	variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
 	title: "trygve.dev",
-	description: "Hi, I'm Trygve👋",
+	description:
+		"Full Stack Developer specializing in Next.js, React, and TypeScript. View my portfolio, projects, and experience.",
+	keywords:
+		"Trygve, Full Stack Developer, Next.js, React, TypeScript, Web Development",
+	authors: [{ name: "TrygveDev" }],
+	creator: "TrygveDev",
+	publisher: "TrygveDev",
+	robots: "index, follow",
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: "https://trygve.dev",
+		siteName: "trygve.dev",
+		title: "trygve.dev",
+		description:
+			"Full Stack Developer specializing in Next.js, React, and TypeScript. View my portfolio, projects, and experience.",
+		images: [
+			{
+				url: "https://trygve.dev/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "trygve.dev",
+			},
+		],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "trygve.dev",
+		description:
+			"Full Stack Developer specializing in Next.js, React, and TypeScript. View my portfolio, projects, and experience.",
+		creator: "@trygvedev",
+		images: ["https://trygve.dev/og-image.png"],
+	},
+	icons: {
+		icon: "/favicon.ico",
+		apple: "/apple-touch-icon.png",
+	},
+
+	manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 1,
+	themeColor: "#020817",
 };
 
 export default function RootLayout({
@@ -27,16 +69,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html
-			lang="en"
-			className={rubik.variable + " " + roboto.variable}
-			suppressHydrationWarning
-		>
-			<body>
-				<ThemeProvider attribute="class" defaultTheme="dark">
-					<Header />
+		<html lang="en" suppressHydrationWarning>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					forcedTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
 					{children}
-					<Footer />
 				</ThemeProvider>
 			</body>
 		</html>
