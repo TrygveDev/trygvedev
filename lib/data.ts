@@ -147,7 +147,7 @@ export const projects: Project[] = [
 		title: "Feedfa.st",
 		description:
 			"A tool for developers to collect user feedback on their projects, built with Next.js, TailwindCSS, and TypeScript.",
-		githubUrl: "https://github.com/yourusername/portfolio",
+		githubUrl: "https://github.com/TrygveDev",
 		liveUrl: "https://feedfa.st",
 		image: "https://feedfa.st/og-image.png",
 	},
@@ -155,7 +155,7 @@ export const projects: Project[] = [
 		title: "Renow AS Website",
 		description:
 			"Developed a sustainable and energy-efficient website solution for Renow AS using Next.js and modern web technologies.",
-		githubUrl: "https://github.com/yourusername/renow-website",
+		githubUrl: "https://github.com/TrygveDev",
 		liveUrl: "https://renow.no",
 		image: "https://www.renow.no/opengraph-image.png",
 	},
@@ -163,7 +163,7 @@ export const projects: Project[] = [
 		title: "Personal Portfolio",
 		description:
 			"Built a modern portfolio website using Next.js, TypeScript, and TailwindCSS to showcase my projects and experience.",
-		githubUrl: "https://github.com/yourusername/portfolio",
+		githubUrl: "https://github.com/TrygveDev",
 		liveUrl: "https://trygve.dev",
 		image: "https://trygve.dev/og-image.png",
 	},
