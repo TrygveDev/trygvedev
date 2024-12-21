@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import PlausibleProvider from "next-plausible";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -73,15 +74,17 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="dark"
-					forcedTheme="dark"
-					enableSystem
-					disableTransitionOnChange
-				>
-					{children}
-				</ThemeProvider>
+				<PlausibleProvider domain="trygve.dev">
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="dark"
+						forcedTheme="dark"
+						enableSystem
+						disableTransitionOnChange
+					>
+						{children}
+					</ThemeProvider>
+				</PlausibleProvider>
 			</body>
 		</html>
 	);
