@@ -43,7 +43,7 @@ export default function Home() {
 								initial={{ scale: 0.5, opacity: 0 }}
 								animate={{ scale: 1, opacity: 1 }}
 								transition={{ duration: 0.5 }}
-								className="relative h-28 w-28 sm:h-36 sm:w-36 shrink-0"
+								className="relative h-28 w-28 sm:h-40 sm:w-40 shrink-0"
 							>
 								<div className="absolute -inset-2 animate-pulse rounded-full bg-gradient-to-r from-primary/20 to-primary/40 blur-xl" />
 								<Image
@@ -93,7 +93,7 @@ export default function Home() {
 										duration: 0.5,
 										delay: 0.4,
 									}}
-									className="text-sm sm:text-base text-muted-foreground flex items-center gap-4"
+									className="w-full text-center justify-center sm:text-left text-sm sm:text-base text-muted-foreground flex sm:justify-start gap-4"
 								>
 									<span className="flex items-center">
 										<CakeIcon className="h-4 w-4 mr-1.5 inline-block" />
