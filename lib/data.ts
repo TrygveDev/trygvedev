@@ -199,6 +199,14 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
 	{
+		title: "Live Markdown Editor",
+		description:
+			"A live markdown editor with syntax highlighting, built with Next.js, TailwindCSS, and TypeScript.",
+		githubUrl: "https://github.com/TrygveDev/livemd",
+		liveUrl: "https://livemd.trygve.dev",
+		image: "https://livemd.trygve.dev/og-image.png",
+	},
+	{
 		title: "Feedfa.st",
 		description:
 			"A tool for developers to collect user feedback on their projects, built with Next.js, TailwindCSS, and TypeScript.",
