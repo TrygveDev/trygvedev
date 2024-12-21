@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { CakeIcon, ExternalLink, MapPin } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Briefcase, Code, GraduationCap, Lightbulb } from "lucide-react";
@@ -10,18 +10,27 @@ import {
 	projects,
 	skills,
 	socialLinks,
+	techStack,
 	workExperience,
 } from "@/lib/data";
 import { motion } from "motion/react";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import { ConfettiButton } from "@/components/confetti-button";
+import { Badge } from "@/components/ui/badge";
+import { format, formatDistance } from "date-fns";
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const MotionCard = motion.create(Card);
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-background flex flex-col gap-8 sm:gap-16 py-8 sm:py-16 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
+		<div className="min-h-screen bg-background flex flex-col gap-6 py-8 sm:py-16 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
 			<header className="w-full">
 				<div className="relative overflow-hidden rounded-xl border bg-gradient-to-b from-secondary/50 to-secondary p-4 sm:p-6 backdrop-blur-sm">
 					<div className="absolute inset-0 bg-grid-white/10" />
@@ -78,10 +87,29 @@ export default function Home() {
 									I&apos;m Trygve, a tech enthusiast who loves
 									turning big ideas into simple, useful tools.
 								</motion.p>
+								<motion.p
+									initial={{ opacity: 0, x: -20 }}
+									animate={{ opacity: 1, x: 0 }}
+									transition={{
+										duration: 0.5,
+										delay: 0.4,
+									}}
+									className="text-sm sm:text-base text-muted-foreground flex items-center gap-4"
+								>
+									<span className="flex items-center">
+										<CakeIcon className="h-4 w-4 mr-1.5 inline-block" />
+										{new Date().getFullYear() - 2005} years
+										old
+									</span>
+									<span className="flex items-center">
+										<MapPin className="h-4 w-4 mr-1.5 inline-block" />
+										Norway 🇳🇴
+									</span>
+								</motion.p>
 								<motion.div
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
-									transition={{ delay: 0.4 }}
+									transition={{ delay: 0.5 }}
 									className="flex justify-center sm:justify-start gap-4"
 								>
 									{socialLinks.map((link, index) => (
@@ -130,36 +158,114 @@ export default function Home() {
 			>
 				<main>
 					<Tabs defaultValue="experience" className="space-y-6">
-						<TabsList className="w-full sm:w-fit justify-start overflow-x-auto">
-							<TabsTrigger
-								value="experience"
-								className="flex-grow sm:flex-grow-0"
-							>
-								<Briefcase className="h-4 w-4 mr-2" />
-								Experience
-							</TabsTrigger>
-							<TabsTrigger
-								value="projects"
-								className="flex-grow sm:flex-grow-0"
-							>
-								<Code className="h-4 w-4 mr-2" />
-								Projects
-							</TabsTrigger>
-							<TabsTrigger
-								value="education"
-								className="flex-grow sm:flex-grow-0"
-							>
-								<GraduationCap className="h-4 w-4 mr-2" />
-								Education
-							</TabsTrigger>
-							<TabsTrigger
-								value="skills"
-								className="flex-grow sm:flex-grow-0"
-							>
-								<Lightbulb className="h-4 w-4 mr-2" />
-								Skills
-							</TabsTrigger>
-						</TabsList>
+						<div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+							<TabsList className="w-full sm:w-fit justify-start overflow-x-auto">
+								<TabsTrigger
+									value="experience"
+									className="flex-grow sm:flex-grow-0"
+								>
+									<Briefcase className="h-4 w-4 mr-2" />
+									Experience
+								</TabsTrigger>
+								<TabsTrigger
+									value="projects"
+									className="flex-grow sm:flex-grow-0"
+								>
+									<Code className="h-4 w-4 mr-2" />
+									Projects
+								</TabsTrigger>
+								<TabsTrigger
+									value="education"
+									className="flex-grow sm:flex-grow-0"
+								>
+									<GraduationCap className="h-4 w-4 mr-2" />
+									Education
+								</TabsTrigger>
+								<TabsTrigger
+									value="skills"
+									className="flex-grow sm:flex-grow-0"
+								>
+									<Lightbulb className="h-4 w-4 mr-2" />
+									Skills
+								</TabsTrigger>
+							</TabsList>
+
+							<div className="relative w-full sm:w-fit flex flex-row items-center justify-start rounded-lg bg-gradient-to-b from-secondary/50 to-secondary text-muted-foreground backdrop-blur-sm h-9 overflow-x-auto whitespace-nowrap">
+								<div className="absolute inset-0 bg-grid-white/10" />
+								<div className="relative flex flex-row gap-2 items-center justify-start px-3">
+									<p className="text-sm font-medium">
+										Favorite Tech Stack
+									</p>
+									<div className="flex flex-row">
+										{techStack.map((tech, index) => (
+											<motion.div
+												key={tech.name}
+												initial={{ opacity: 0, y: 20 }}
+												animate={{ opacity: 1, y: 0 }}
+												transition={{
+													duration: 0.3,
+													delay: index * 0.1,
+												}}
+												className="h-9 w-9 flex items-center justify-center"
+											>
+												<TooltipProvider
+													delayDuration={0}
+												>
+													<Tooltip>
+														<TooltipTrigger asChild>
+															<Button
+																variant="outline"
+																size="icon"
+																className="h-7 w-7 p-1.5 bg-background/45 backdrop-blur-sm"
+																asChild
+															>
+																<Link
+																	href={
+																		tech.url
+																	}
+																	target="_blank"
+																>
+																	<Image
+																		src={
+																			tech.logo
+																		}
+																		alt={
+																			tech.name
+																		}
+																		width={
+																			100
+																		}
+																		height={
+																			100
+																		}
+																		className="transition-transform hover:scale-110 object-cover"
+																	/>
+																</Link>
+															</Button>
+														</TooltipTrigger>
+														<TooltipContent className="bg-background/50 backdrop-blur-sm text-foreground max-w-[350px] space-y-1">
+															<p className="font-medium">
+																{tech.name}
+															</p>
+															<p className="text-xs text-muted-foreground">
+																{
+																	tech.description
+																}
+															</p>
+															<p className="text-xs text-muted-foreground flex items-center gap-1">
+																Click to read
+																more
+																<ExternalLink className="h-3 w-3" />
+															</p>
+														</TooltipContent>
+													</Tooltip>
+												</TooltipProvider>
+											</motion.div>
+										))}
+									</div>
+								</div>
+							</div>
+						</div>
 
 						<TabsContent value="experience" asChild>
 							<motion.div
@@ -184,7 +290,7 @@ export default function Home() {
 											}}
 										>
 											<CardContent className="p-4 sm:p-6">
-												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-start text-center sm:text-left">
+												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
 													<Image
 														src={job.logo}
 														alt={job.company}
@@ -193,12 +299,34 @@ export default function Home() {
 														className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
 													/>
 													<div className="space-y-2">
+														{job.startDate.getTime() >=
+															new Date().getTime() && (
+															<Badge className="ml-auto">
+																Not started
+															</Badge>
+														)}
 														<h3 className="text-xl font-semibold">
 															{job.title}
 														</h3>
-														<p className="text-muted-foreground">
+														<p className="text-muted-foreground flex items-center justify-between">
 															{job.company} •{" "}
-															{job.period}
+															{format(
+																job.startDate,
+																"MMM yyyy"
+															)}{" "}
+															-{" "}
+															{job.endDate
+																? format(
+																		job.endDate,
+																		"MMM yyyy"
+																  )
+																: "Present"}{" "}
+															•{" "}
+															{formatDistance(
+																job.startDate,
+																job.endDate ??
+																	new Date()
+															)}
 														</p>
 														<p className="text-sm sm:text-base">
 															{job.description}
@@ -341,7 +469,7 @@ export default function Home() {
 											}}
 										>
 											<CardContent className="p-4 sm:p-6">
-												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-start text-center sm:text-left">
+												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
 													<Image
 														src={edu.logo}
 														alt={edu.school}
@@ -350,12 +478,34 @@ export default function Home() {
 														className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
 													/>
 													<div className="space-y-2">
+														{edu.startDate.getTime() >=
+															new Date().getTime() && (
+															<Badge className="ml-auto">
+																Not started
+															</Badge>
+														)}
 														<h3 className="text-xl font-semibold">
 															{edu.degree}
 														</h3>
-														<p className="text-muted-foreground">
+														<p className="text-muted-foreground flex items-center justify-between">
 															{edu.school} •{" "}
-															{edu.year}
+															{format(
+																edu.startDate,
+																"MMM yyyy"
+															)}{" "}
+															-{" "}
+															{edu.endDate
+																? format(
+																		edu.endDate,
+																		"MMM yyyy"
+																  )
+																: "Present"}{" "}
+															•{" "}
+															{formatDistance(
+																edu.startDate,
+																edu.endDate ??
+																	new Date()
+															)}
 														</p>
 														<p className="text-sm sm:text-base">
 															{edu.description}

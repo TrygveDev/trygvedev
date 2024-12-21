@@ -6,7 +6,8 @@ export interface SocialLink {
 export interface WorkExperience {
 	title: string;
 	company: string;
-	period: string;
+	startDate: Date;
+	endDate?: Date;
 	description: string;
 	logo: string;
 }
@@ -22,7 +23,8 @@ export interface Project {
 export interface Education {
 	degree: string;
 	school: string;
-	year: string;
+	startDate: Date;
+	endDate?: Date;
 	description: string;
 	logo: string;
 }
@@ -31,6 +33,13 @@ export interface Skill {
 	name: string;
 	icon: string;
 	level: number;
+}
+
+export interface TechStack {
+	name: string;
+	description: string;
+	logo: string;
+	url: string;
 }
 
 export const socialLinks: SocialLink[] = [
@@ -50,9 +59,18 @@ export const socialLinks: SocialLink[] = [
 
 export const workExperience: WorkExperience[] = [
 	{
+		title: "Compulsory Military Service",
+		company: "Norwegian Armed Forces",
+		startDate: new Date("2025-01-01"),
+		endDate: new Date("2026-01-01"),
+		description:
+			"A 12-month compulsory military service in the Royal Norwegian Air Force.",
+		logo: "/images/norwegian-air-force-logo.png",
+	},
+	{
 		title: "IT Developer",
 		company: "Kripos",
-		period: "Oct 2023 - Present",
+		startDate: new Date("2023-10-01"),
 		description:
 			"Development of various in-house solutions using modern web technologies including TypeScript and Next.js.",
 		logo: "/images/kripos-logo.png",
@@ -60,7 +78,7 @@ export const workExperience: WorkExperience[] = [
 	{
 		title: "CEO, Co-Founder",
 		company: "Renow AS",
-		period: "Oct 2023 - Present",
+		startDate: new Date("2023-10-01"),
 		description:
 			"Co-founder of Renow AS. Leading company direction, making strategic decisions, and ensuring company growth. Actively involved in daily IT development operations.",
 		logo: "/images/renow-logo.png",
@@ -68,7 +86,8 @@ export const workExperience: WorkExperience[] = [
 	{
 		title: "Training Assistant",
 		company: "McDonald's",
-		period: "Sep 2021 - Apr 2024",
+		startDate: new Date("2021-09-01"),
+		endDate: new Date("2024-04-01"),
 		description:
 			"Responsible for training and guiding new employees, demonstrating proper food preparation, teaching customer service routines, safety, and hygiene protocols.",
 		logo: "/images/mcdonalds-logo.png",
@@ -76,7 +95,8 @@ export const workExperience: WorkExperience[] = [
 	{
 		title: "IT Developer Intern",
 		company: "Kripos",
-		period: "Mar 2023 - Apr 2023",
+		startDate: new Date("2023-03-01"),
+		endDate: new Date("2023-04-01"),
 		description:
 			"Developed various in-house solutions using JavaScript and React.js during internship period.",
 		logo: "/images/kripos-logo.png",
@@ -85,9 +105,28 @@ export const workExperience: WorkExperience[] = [
 
 export const education: Education[] = [
 	{
+		degree: "Bachelor of Computer Science",
+		school: "OsloMet",
+		startDate: new Date("2027"),
+		endDate: new Date("2030"),
+		description:
+			"The Computer Engineering program provides you with a broad and vocational education in information technology, particularly focused on programming and software, and system and application development.",
+		logo: "/images/oslomet-logo.png",
+	},
+	{
+		degree: "Preparatory course for engineering education",
+		school: "OsloMet",
+		startDate: new Date("2026"),
+		endDate: new Date("2027"),
+		description:
+			"Preparatory course for engineering education, focusing on mathematics, physics, and computer science.",
+		logo: "/images/oslomet-logo.png",
+	},
+	{
 		degree: "Information Technology",
 		school: "Drømtorp Videregående Skole",
-		year: "2021 - 2023",
+		startDate: new Date("2021-08"),
+		endDate: new Date("2023-06"),
 		description:
 			"Learned basic programming, web development, and computer science.",
 		logo: "/images/dromtorp-logo.png",
@@ -166,5 +205,43 @@ export const projects: Project[] = [
 		githubUrl: "https://github.com/TrygveDev",
 		liveUrl: "https://trygve.dev",
 		image: "https://trygve.dev/og-image.png",
+	},
+];
+
+export const techStack: TechStack[] = [
+	{
+		name: "Next.js",
+		description:
+			"A React framework, providing hybrid static & server rendering, TypeScript support, smart bundling, and more.",
+		logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+		url: "https://nextjs.org",
+	},
+	{
+		name: "shadcn/ui",
+		description:
+			"Beautifully designed components built with Radix UI and Tailwind CSS, offering accessibility and customization.",
+		logo: "/images/shadcn-logo.png",
+		url: "https://ui.shadcn.com",
+	},
+	{
+		name: "Clerk",
+		description:
+			"Complete user management and authentication solution, with pre-built components and APIs.",
+		logo: "/images/clerk-logo.png",
+		url: "https://clerk.com",
+	},
+	{
+		name: "Convex",
+		description:
+			"Backend application platform with real-time state management and automatic API generation.",
+		logo: "/images/convex-logo.png",
+		url: "https://convex.dev",
+	},
+	{
+		name: "Cursor",
+		description:
+			"AI-first code editor that helps you write better code faster with built-in AI capabilities.",
+		logo: "/images/cursor-logo.png",
+		url: "https://cursor.com",
 	},
 ];
