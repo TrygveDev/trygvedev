@@ -14,7 +14,6 @@ import {
 	workExperience,
 } from "@/lib/data";
 import { motion } from "motion/react";
-import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import { ConfettiButton } from "@/components/confetti-button";
 import { Badge } from "@/components/ui/badge";
@@ -526,9 +525,20 @@ export default function Home() {
 								transition={{ duration: 0.3 }}
 								exit={{ opacity: 0, y: -20 }}
 							>
-								<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+								<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 									{skills
-										.sort((a, b) => b.level - a.level)
+										.sort((a, b) => {
+											const order = {
+												Expert: 1,
+												Advanced: 2,
+												Intermediate: 3,
+												Learning: 4,
+											};
+											return (
+												order[a.category] -
+												order[b.category]
+											);
+										})
 										.map((skill, index) => (
 											<MotionCard
 												key={index}
@@ -541,38 +551,59 @@ export default function Home() {
 												initial={{ opacity: 0, y: 20 }}
 												animate={{ opacity: 1, y: 0 }}
 												transition={{
-													duration: 0.3,
-													delay: index * 0.1,
+													scale: {
+														type: "spring",
+														duration: 0.2,
+													},
+													opacity: {
+														duration: 0.3,
+														delay: index * 0.1,
+													},
+													y: {
+														duration: 0.3,
+														delay: index * 0.1,
+													},
 												}}
 											>
 												<CardContent className="p-4 sm:p-6">
-													<div className="flex items-center gap-4 mb-4">
-														<Image
-															src={skill.icon}
-															alt={skill.name}
-															width={32}
-															height={32}
-															className="rounded w-6 h-6 sm:w-8 sm:h-8"
-														/>
-														<h3 className="text-base sm:text-lg font-semibold">
-															{skill.name}
-														</h3>
+													<div className="flex flex-col gap-4">
+														<div className="flex items-center justify-between">
+															<div className="flex items-center gap-4">
+																<Image
+																	src={
+																		skill.icon
+																	}
+																	alt={
+																		skill.name
+																	}
+																	width={32}
+																	height={32}
+																	className="rounded w-6 h-6 sm:w-8 sm:h-8"
+																/>
+																<h3 className="text-base sm:text-lg font-semibold">
+																	{skill.name}
+																</h3>
+															</div>
+															<Badge
+																variant={
+																	skill.category.toLowerCase() as
+																		| "expert"
+																		| "advanced"
+																		| "intermediate"
+																		| "learning"
+																}
+															>
+																{skill.category}
+															</Badge>
+														</div>
+														{skill.description && (
+															<p className="text-sm text-muted-foreground">
+																{
+																	skill.description
+																}
+															</p>
+														)}
 													</div>
-													<motion.div
-														initial={{ width: 0 }}
-														animate={{
-															width: "100%",
-														}}
-														transition={{
-															duration: 0.5,
-															delay: 0.2,
-														}}
-													>
-														<Progress
-															value={skill.level}
-															className="h-2"
-														/>
-													</motion.div>
 												</CardContent>
 											</MotionCard>
 										))}
