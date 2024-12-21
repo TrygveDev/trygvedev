@@ -41,7 +41,14 @@ export function ConfettiButton() {
 			initial={{ opacity: 0, scale: 0.8 }}
 			animate={{ opacity: 1, scale: 1 }}
 			transition={{
-				delay: (socialLinks.length + 1) * 0.1 + 0.5,
+				scale: {
+					type: "spring",
+					duration: 0.3,
+				},
+				opacity: {
+					duration: 0.3,
+					delay: socialLinks.length * 0.1 + 0.5,
+				},
 			}}
 			whileHover={{ scale: 1.1 }}
 			whileTap={{ scale: 0.95 }}

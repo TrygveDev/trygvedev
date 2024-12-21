@@ -117,7 +117,14 @@ export default function Home() {
 											initial={{ opacity: 0, scale: 0.8 }}
 											animate={{ opacity: 1, scale: 1 }}
 											transition={{
-												delay: index * 0.1 + 0.5,
+												scale: {
+													type: "spring",
+													duration: 0.3,
+												},
+												opacity: {
+													duration: 0.3,
+													delay: index * 0.1 + 0.5,
+												},
 											}}
 											whileHover={{ scale: 1.1 }}
 											whileTap={{ scale: 0.95 }}
@@ -202,8 +209,15 @@ export default function Home() {
 												initial={{ opacity: 0, y: 20 }}
 												animate={{ opacity: 1, y: 0 }}
 												transition={{
-													duration: 0.3,
-													delay: index * 0.1,
+													scale: {
+														type: "spring",
+														duration: 0.3,
+													},
+													opacity: {
+														duration: 0.3,
+														delay:
+															index * 0.1 + 0.5,
+													},
 												}}
 												className="h-9 w-9 flex items-center justify-center"
 											>
