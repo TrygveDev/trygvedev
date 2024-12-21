@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
+import { withPlausibleProxy } from "next-plausible";
+
 const nextConfig: NextConfig = {
-	/* config options here */
 	images: {
 		remotePatterns: [
 			{
@@ -25,8 +26,12 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "trygve.dev",
 			},
+			{
+				protocol: "https",
+				hostname: "cdn.jsdelivr.net",
+			},
 		],
 	},
 };
 
-export default nextConfig;
+module.exports = withPlausibleProxy()(nextConfig);
