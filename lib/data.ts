@@ -16,7 +16,7 @@ export interface Project {
 	title: string;
 	description: string;
 	githubUrl: string;
-	liveUrl: string;
+	liveUrl?: string;
 	image: string;
 }
 
@@ -63,9 +63,9 @@ export const workExperience: WorkExperience[] = [
 		title: "Compulsory Military Service",
 		company: "Norwegian Armed Forces",
 		startDate: new Date("2025-01-01"),
-		endDate: new Date("2026-01-01"),
+		endDate: new Date("2025-12-18"),
 		description:
-			"A 12-month compulsory military service in the Royal Norwegian Air Force.",
+			"A 12-month conscript military service in the Royal Norwegian Air Force.",
 		logo: "/images/norwegian-air-force-logo.png",
 	},
 	{
@@ -105,24 +105,24 @@ export const workExperience: WorkExperience[] = [
 ];
 
 export const education: Education[] = [
-	{
-		degree: "Bachelor of Computer Science",
-		school: "OsloMet",
-		startDate: new Date("2027"),
-		endDate: new Date("2030"),
-		description:
-			"The Computer Engineering program provides you with a broad and vocational education in information technology, particularly focused on programming and software, and system and application development.",
-		logo: "/images/oslomet-logo.png",
-	},
-	{
-		degree: "Preparatory course for engineering education",
-		school: "OsloMet",
-		startDate: new Date("2026"),
-		endDate: new Date("2027"),
-		description:
-			"Preparatory course for engineering education, focusing on mathematics, physics, and computer science.",
-		logo: "/images/oslomet-logo.png",
-	},
+	// {
+	// 	degree: "Bachelor of Computer Science",
+	// 	school: "OsloMet",
+	// 	startDate: new Date("2027"),
+	// 	endDate: new Date("2030"),
+	// 	description:
+	// 		"The Computer Engineering program provides you with a broad and vocational education in information technology, particularly focused on programming and software, and system and application development.",
+	// 	logo: "/images/oslomet-logo.png",
+	// },
+	// {
+	// 	degree: "Preparatory course for engineering education",
+	// 	school: "OsloMet",
+	// 	startDate: new Date("2026"),
+	// 	endDate: new Date("2027"),
+	// 	description:
+	// 		"Preparatory course for engineering education, focusing on mathematics, physics, and computer science.",
+	// 	logo: "/images/oslomet-logo.png",
+	// },
 	{
 		degree: "Information Technology",
 		school: "Drømtorp Videregående Skole",
@@ -209,10 +209,9 @@ export const projects: Project[] = [
 	{
 		title: "Feedfa.st",
 		description:
-			"A tool for developers to collect user feedback on their projects, built with Next.js, TailwindCSS, and TypeScript.",
+			"A tool for developers to collect user feedback on their projects, built with Next.js, TailwindCSS, and TypeScript. No longer live.",
 		githubUrl: "https://github.com/TrygveDev",
-		liveUrl: "https://feedfa.st",
-		image: "https://feedfa.st/og-image.png",
+		image: "/images/feedfast.png",
 	},
 	{
 		title: "Renow AS Website",
@@ -220,7 +219,7 @@ export const projects: Project[] = [
 			"Developed a sustainable and energy-efficient website solution for Renow AS using Next.js and modern web technologies.",
 		githubUrl: "https://github.com/TrygveDev",
 		liveUrl: "https://renow.no",
-		image: "https://www.renow.no/opengraph-image.png",
+		image: "https://renow.no/opengraph-image",
 	},
 	{
 		title: "Personal Portfolio",

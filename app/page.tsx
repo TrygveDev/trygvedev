@@ -288,7 +288,19 @@ export default function Home() {
 								exit={{ opacity: 0, y: -20 }}
 							>
 								<div className="grid gap-6">
-									{workExperience.map((job, index) => (
+									{[...workExperience]
+										.sort((a, b) => {
+											const aIsPresent = !a.endDate;
+											const bIsPresent = !b.endDate;
+											
+											// Present items first
+											if (aIsPresent && !bIsPresent) return -1;
+											if (!aIsPresent && bIsPresent) return 1;
+											
+											// Then sort by startDate descending (latest first)
+											return b.startDate.getTime() - a.startDate.getTime();
+										})
+										.map((job, index) => (
 										<MotionCard
 											key={index}
 											whileHover={{
@@ -301,6 +313,7 @@ export default function Home() {
 												duration: 0.3,
 												delay: index * 0.1,
 											}}
+											className={!job.endDate ? "border-2 border-primary" : ""}
 										>
 											<CardContent className="p-4 sm:p-6">
 												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
@@ -427,7 +440,8 @@ export default function Home() {
 																</a>
 															</Button>
 														</motion.div>
-														<motion.div
+														{project.liveUrl && (
+															<motion.div
 															whileHover={{
 																scale: 1.05,
 															}}
@@ -449,7 +463,8 @@ export default function Home() {
 																	View Project
 																</a>
 															</Button>
-														</motion.div>
+															</motion.div>
+														)}
 													</div>
 												</div>
 											</CardContent>
@@ -467,7 +482,19 @@ export default function Home() {
 								exit={{ opacity: 0, y: -20 }}
 							>
 								<div className="grid gap-6">
-									{education.map((edu, index) => (
+									{[...education]
+										.sort((a, b) => {
+											const aIsPresent = !a.endDate;
+											const bIsPresent = !b.endDate;
+											
+											// Present items first
+											if (aIsPresent && !bIsPresent) return -1;
+											if (!aIsPresent && bIsPresent) return 1;
+											
+											// Then sort by startDate descending (latest first)
+											return b.startDate.getTime() - a.startDate.getTime();
+										})
+										.map((edu, index) => (
 										<MotionCard
 											key={index}
 											whileHover={{
@@ -480,6 +507,7 @@ export default function Home() {
 												duration: 0.3,
 												delay: index * 0.1,
 											}}
+											className={!edu.endDate ? "border-2 border-primary" : ""}
 										>
 											<CardContent className="p-4 sm:p-6">
 												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">

@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "www.renow.no",
+				hostname: "renow.no",
 			},
 			{
 				protocol: "https",

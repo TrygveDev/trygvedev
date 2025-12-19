@@ -74,7 +74,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<PlausibleProvider domain="trygve.dev">
+				<PlausibleProvider domain="trygve.dev" selfHosted>
 					<ThemeProvider
 						attribute="class"
 						defaultTheme="dark"
