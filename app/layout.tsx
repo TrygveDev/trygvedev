@@ -74,7 +74,9 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<PlausibleProvider domain="trygve.dev" selfHosted>
+				<PlausibleProvider domain="trygve.dev"
+					customDomain="https://plausible.renow.no"
+					selfHosted >
 					<ThemeProvider
 						attribute="class"
 						defaultTheme="dark"
