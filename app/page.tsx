@@ -27,6 +27,14 @@ import {
 
 const MotionCard = motion.create(Card);
 
+function trackProjectClick(projectTitle: string, linkType: string) {
+	void import("@plausible-analytics/tracker").then(({ track }) =>
+		track("Project Click", {
+			props: { project: projectTitle, link: linkType },
+		}),
+	);
+}
+
 export default function Home() {
 	return (
 		<div className="min-h-screen bg-background flex flex-col gap-6 py-8 sm:py-16 px-4 sm:px-8 max-w-7xl mx-auto overflow-hidden">
@@ -425,6 +433,12 @@ export default function Home() {
 																		}
 																		target="_blank"
 																		rel="noopener noreferrer"
+																		onClick={() =>
+																			trackProjectClick(
+																				project.title,
+																				"more_info",
+																			)
+																		}
 																	>
 																		<InfoIcon className="h-4 w-4 mr-2" />
 																		More Info
@@ -450,6 +464,12 @@ export default function Home() {
 																		}
 																		target="_blank"
 																		rel="noopener noreferrer"
+																		onClick={() =>
+																			trackProjectClick(
+																				project.title,
+																				"view_code",
+																			)
+																		}
 																	>
 																		<Image
 																			src="/icons/github.svg"
@@ -485,6 +505,12 @@ export default function Home() {
 																		}
 																		target="_blank"
 																		rel="noopener noreferrer"
+																		onClick={() =>
+																			trackProjectClick(
+																				project.title,
+																				"view_project",
+																			)
+																		}
 																	>
 																		<ExternalLink className="h-4 w-4 mr-2" />
 																		View Project
