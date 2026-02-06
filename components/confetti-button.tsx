@@ -5,11 +5,8 @@ import { PartyPopper } from "lucide-react";
 import { motion } from "motion/react";
 import confetti from "canvas-confetti";
 import { socialLinks } from "@/lib/data";
-import { usePlausible } from "next-plausible";
 
 export function ConfettiButton() {
-	const plausible = usePlausible();
-
 	const triggerConfetti = (e: React.MouseEvent<HTMLButtonElement>) => {
 		// Get the button's position relative to the viewport
 		const button = e.currentTarget;
@@ -37,7 +34,9 @@ export function ConfettiButton() {
 			gravity: 0.8,
 			scalar: 0.7,
 		});
-		plausible("confetti");
+		void import("@plausible-analytics/tracker").then(({ track }) =>
+			track("confetti", {}),
+		);
 	};
 
 	return (

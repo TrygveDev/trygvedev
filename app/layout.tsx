@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import PlausibleProvider from "next-plausible";
+import { PlausibleTracker } from "@/components/plausible-tracker";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -74,19 +74,16 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<PlausibleProvider domain="trygve.dev"
-					customDomain="https://plausible.renow.no"
-					selfHosted >
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="dark"
-						forcedTheme="dark"
-						enableSystem
-						disableTransitionOnChange
-					>
-						{children}
-					</ThemeProvider>
-				</PlausibleProvider>
+				<PlausibleTracker />
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					forcedTheme="dark"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
