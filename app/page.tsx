@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { CakeIcon, ExternalLink, MapPin } from "lucide-react";
+import { CakeIcon, ExternalLink, InfoIcon, MapPin } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Briefcase, Code, GraduationCap, Lightbulb } from "lucide-react";
@@ -292,76 +292,76 @@ export default function Home() {
 										.sort((a, b) => {
 											const aIsPresent = !a.endDate;
 											const bIsPresent = !b.endDate;
-											
+
 											// Present items first
 											if (aIsPresent && !bIsPresent) return -1;
 											if (!aIsPresent && bIsPresent) return 1;
-											
+
 											// Then sort by startDate descending (latest first)
 											return b.startDate.getTime() - a.startDate.getTime();
 										})
 										.map((job, index) => (
-										<MotionCard
-											key={index}
-											whileHover={{
-												scale: 1.02,
-												transition: { duration: 0.2 },
-											}}
-											initial={{ opacity: 0, y: 20 }}
-											animate={{ opacity: 1, y: 0 }}
-											transition={{
-												duration: 0.3,
-												delay: index * 0.1,
-											}}
-											className={!job.endDate ? "border-2 border-primary" : ""}
-										>
-											<CardContent className="p-4 sm:p-6">
-												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
-													<Image
-														src={job.logo}
-														alt={job.company}
-														width={200}
-														height={200}
-														className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
-													/>
-													<div className="space-y-2">
-														{job.startDate.getTime() >=
-															new Date().getTime() && (
-															<Badge className="ml-auto">
-																Not started
-															</Badge>
-														)}
-														<h3 className="text-xl font-semibold">
-															{job.title}
-														</h3>
-														<p className="text-muted-foreground flex items-center justify-between">
-															{job.company} •{" "}
-															{format(
-																job.startDate,
-																"MMM yyyy"
-															)}{" "}
-															-{" "}
-															{job.endDate
-																? format(
+											<MotionCard
+												key={index}
+												whileHover={{
+													scale: 1.02,
+													transition: { duration: 0.2 },
+												}}
+												initial={{ opacity: 0, y: 20 }}
+												animate={{ opacity: 1, y: 0 }}
+												transition={{
+													duration: 0.3,
+													delay: index * 0.1,
+												}}
+												className={!job.endDate ? "border-2 border-primary" : ""}
+											>
+												<CardContent className="p-4 sm:p-6">
+													<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
+														<Image
+															src={job.logo}
+															alt={job.company}
+															width={200}
+															height={200}
+															className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
+														/>
+														<div className="space-y-2">
+															{job.startDate.getTime() >=
+																new Date().getTime() && (
+																	<Badge className="ml-auto">
+																		Not started
+																	</Badge>
+																)}
+															<h3 className="text-xl font-semibold">
+																{job.title}
+															</h3>
+															<p className="text-muted-foreground flex items-center justify-between">
+																{job.company} •{" "}
+																{format(
+																	job.startDate,
+																	"MMM yyyy"
+																)}{" "}
+																-{" "}
+																{job.endDate
+																	? format(
 																		job.endDate,
 																		"MMM yyyy"
-																  )
-																: "Present"}{" "}
-															•{" "}
-															{formatDistance(
-																job.startDate,
-																job.endDate ??
+																	)
+																	: "Present"}{" "}
+																•{" "}
+																{formatDistance(
+																	job.startDate,
+																	job.endDate ??
 																	new Date()
-															)}
-														</p>
-														<p className="text-sm sm:text-base">
-															{job.description}
-														</p>
+																)}
+															</p>
+															<p className="text-sm sm:text-base">
+																{job.description}
+															</p>
+														</div>
 													</div>
-												</div>
-											</CardContent>
-										</MotionCard>
-									))}
+												</CardContent>
+											</MotionCard>
+										))}
 								</div>
 							</motion.div>
 						</TabsContent>
@@ -407,62 +407,89 @@ export default function Home() {
 														{project.description}
 													</p>
 													<div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-														<motion.div
-															whileHover={{
-																scale: 1.05,
-															}}
-															className="w-full sm:w-auto"
-														>
-															<Button
-																variant="outline"
+														{project.moreInfoUrl && (
+															<motion.div
+																whileHover={{
+																	scale: 1.05,
+																}}
 																className="w-full sm:w-auto"
-																asChild
 															>
-																<a
-																	href={
-																		project.githubUrl
-																	}
-																	target="_blank"
-																	rel="noopener noreferrer"
+																<Button
+																	variant="outline"
+																	className="w-full sm:w-auto"
+																	asChild
 																>
-																	<Image
-																		src="/icons/github.svg"
-																		alt="GitHub"
-																		width={
-																			16
+																	<a
+																		href={
+																			project.moreInfoUrl
 																		}
-																		height={
-																			16
+																		target="_blank"
+																		rel="noopener noreferrer"
+																	>
+																		<InfoIcon className="h-4 w-4 mr-2" />
+																		More Info
+																	</a>
+																</Button>
+															</motion.div>
+														)}
+														{project.githubUrl && (
+															<motion.div
+																whileHover={{
+																	scale: 1.05,
+																}}
+																className="w-full sm:w-auto"
+															>
+																<Button
+																	variant="outline"
+																	className="w-full sm:w-auto"
+																	asChild
+																>
+																	<a
+																		href={
+																			project.githubUrl
 																		}
-																		className="mr-2"
-																	/>
-																	View Code
-																</a>
-															</Button>
-														</motion.div>
+																		target="_blank"
+																		rel="noopener noreferrer"
+																	>
+																		<Image
+																			src="/icons/github.svg"
+																			alt="GitHub"
+																			width={
+																				16
+																			}
+																			height={
+																				16
+																			}
+																			className="mr-2"
+																		/>
+																		View Code
+																	</a>
+																</Button>
+															</motion.div>
+														)}
 														{project.liveUrl && (
 															<motion.div
-															whileHover={{
-																scale: 1.05,
-															}}
-															className="w-full sm:w-auto"
-														>
-															<Button
-																variant="outline"
+																whileHover={{
+																	scale: 1.05,
+																}}
 																className="w-full sm:w-auto"
-																asChild
 															>
-																<a
-																	href={
-																		project.liveUrl
-																	}
-																	target="_blank"
-																	rel="noopener noreferrer"
+																<Button
+																	variant="outline"
+																	className="w-full sm:w-auto"
+																	asChild
 																>
-																	<ExternalLink className="h-4 w-4 mr-2" />
-																	View Project
-																</a>
-															</Button>
+																	<a
+																		href={
+																			project.liveUrl
+																		}
+																		target="_blank"
+																		rel="noopener noreferrer"
+																	>
+																		<ExternalLink className="h-4 w-4 mr-2" />
+																		View Project
+																	</a>
+																</Button>
 															</motion.div>
 														)}
 													</div>
@@ -486,76 +513,76 @@ export default function Home() {
 										.sort((a, b) => {
 											const aIsPresent = !a.endDate;
 											const bIsPresent = !b.endDate;
-											
+
 											// Present items first
 											if (aIsPresent && !bIsPresent) return -1;
 											if (!aIsPresent && bIsPresent) return 1;
-											
+
 											// Then sort by startDate descending (latest first)
 											return b.startDate.getTime() - a.startDate.getTime();
 										})
 										.map((edu, index) => (
-										<MotionCard
-											key={index}
-											whileHover={{
-												scale: 1.02,
-												transition: { duration: 0.2 },
-											}}
-											initial={{ opacity: 0, y: 20 }}
-											animate={{ opacity: 1, y: 0 }}
-											transition={{
-												duration: 0.3,
-												delay: index * 0.1,
-											}}
-											className={!edu.endDate ? "border-2 border-primary" : ""}
-										>
-											<CardContent className="p-4 sm:p-6">
-												<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
-													<Image
-														src={edu.logo}
-														alt={edu.school}
-														width={200}
-														height={200}
-														className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
-													/>
-													<div className="space-y-2">
-														{edu.startDate.getTime() >=
-															new Date().getTime() && (
-															<Badge className="ml-auto">
-																Not started
-															</Badge>
-														)}
-														<h3 className="text-xl font-semibold">
-															{edu.degree}
-														</h3>
-														<p className="text-muted-foreground flex items-center justify-between">
-															{edu.school} •{" "}
-															{format(
-																edu.startDate,
-																"MMM yyyy"
-															)}{" "}
-															-{" "}
-															{edu.endDate
-																? format(
+											<MotionCard
+												key={index}
+												whileHover={{
+													scale: 1.02,
+													transition: { duration: 0.2 },
+												}}
+												initial={{ opacity: 0, y: 20 }}
+												animate={{ opacity: 1, y: 0 }}
+												transition={{
+													duration: 0.3,
+													delay: index * 0.1,
+												}}
+												className={!edu.endDate ? "border-2 border-primary" : ""}
+											>
+												<CardContent className="p-4 sm:p-6">
+													<div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center text-center sm:text-left">
+														<Image
+															src={edu.logo}
+															alt={edu.school}
+															width={200}
+															height={200}
+															className="rounded-lg aspect-square object-contain w-16 h-16 sm:w-24 sm:h-24 border bg-secondary p-2"
+														/>
+														<div className="space-y-2">
+															{edu.startDate.getTime() >=
+																new Date().getTime() && (
+																	<Badge className="ml-auto">
+																		Not started
+																	</Badge>
+																)}
+															<h3 className="text-xl font-semibold">
+																{edu.degree}
+															</h3>
+															<p className="text-muted-foreground flex items-center justify-between">
+																{edu.school} •{" "}
+																{format(
+																	edu.startDate,
+																	"MMM yyyy"
+																)}{" "}
+																-{" "}
+																{edu.endDate
+																	? format(
 																		edu.endDate,
 																		"MMM yyyy"
-																  )
-																: "Present"}{" "}
-															•{" "}
-															{formatDistance(
-																edu.startDate,
-																edu.endDate ??
+																	)
+																	: "Present"}{" "}
+																•{" "}
+																{formatDistance(
+																	edu.startDate,
+																	edu.endDate ??
 																	new Date()
-															)}
-														</p>
-														<p className="text-sm sm:text-base">
-															{edu.description}
-														</p>
+																)}
+															</p>
+															<p className="text-sm sm:text-base">
+																{edu.description}
+															</p>
+														</div>
 													</div>
-												</div>
-											</CardContent>
-										</MotionCard>
-									))}
+												</CardContent>
+											</MotionCard>
+										))}
 								</div>
 							</motion.div>
 						</TabsContent>
@@ -629,10 +656,10 @@ export default function Home() {
 															<Badge
 																variant={
 																	skill.category.toLowerCase() as
-																		| "expert"
-																		| "advanced"
-																		| "intermediate"
-																		| "learning"
+																	| "expert"
+																	| "advanced"
+																	| "intermediate"
+																	| "learning"
 																}
 															>
 																{skill.category}
