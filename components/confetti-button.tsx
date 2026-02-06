@@ -35,7 +35,7 @@ export function ConfettiButton() {
 			scalar: 0.7,
 		});
 		void import("@plausible-analytics/tracker").then(({ track }) =>
-			track("confetti", {}),
+			track("confetti_button", { props: { clicked: "true" } }),
 		);
 	};
 
