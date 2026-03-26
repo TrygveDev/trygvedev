@@ -74,7 +74,7 @@ export const workExperience: WorkExperience[] = [
     company: "Kripos",
     startDate: new Date("2023-10-01"),
     description:
-      "Development of various in-house solutions using modern web technologies including TypeScript and Next.js.",
+      "Development of various in-house solutions using modern front and backend technologies.",
     logo: "/images/kripos-logo.png",
   },
   {
@@ -199,6 +199,13 @@ export const skills: Skill[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: "Lunsjkviss.no",
+    description:
+      "A weekly email subscription that delivers 50 quiz questions to your email address. AI-generated questions, custom quiz categories, and more.",
+    liveUrl: "https://lunsjkviss.no",
+    image: "https://lunsjkviss.no/og-image.png",
+  },
   {
     title: "Police2Peer Map",
     description:

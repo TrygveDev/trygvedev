@@ -36,6 +36,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "police2peer.politiet.no",
       },
+      {
+        protocol: "https",
+        hostname: "lunsjkviss.no",
+      },
     ],
   },
 };
