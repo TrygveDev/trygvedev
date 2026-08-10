@@ -40,6 +40,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "lunsjkviss.no",
       },
+      {
+        protocol: "https",
+        hostname: "loft.trygve.dev",
+      },
     ],
   },
 };

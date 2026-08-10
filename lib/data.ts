@@ -106,24 +106,15 @@ export const workExperience: WorkExperience[] = [
 ];
 
 export const education: Education[] = [
-  // {
-  // 	degree: "Bachelor of Computer Science",
-  // 	school: "OsloMet",
-  // 	startDate: new Date("2027"),
-  // 	endDate: new Date("2030"),
-  // 	description:
-  // 		"The Computer Engineering program provides you with a broad and vocational education in information technology, particularly focused on programming and software, and system and application development.",
-  // 	logo: "/images/oslomet-logo.png",
-  // },
-  // {
-  // 	degree: "Preparatory course for engineering education",
-  // 	school: "OsloMet",
-  // 	startDate: new Date("2026"),
-  // 	endDate: new Date("2027"),
-  // 	description:
-  // 		"Preparatory course for engineering education, focusing on mathematics, physics, and computer science.",
-  // 	logo: "/images/oslomet-logo.png",
-  // },
+  {
+    degree: "Bachelor in Applied Computer Technology",
+    school: "OsloMet",
+    startDate: new Date("2026-08"),
+    endDate: new Date("2029-06"),
+    description:
+      "Designing and building user-centered digital solutions. Specializations from year two: human–computer interaction, technology innovation & entrepreneurship, or programming — with a focus on universal design and real user needs.",
+    logo: "/images/oslomet-logo.png",
+  },
   {
     degree: "Information Technology",
     school: "Drømtorp Videregående Skole",
@@ -199,6 +190,13 @@ export const skills: Skill[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    title: "Løft",
+    description:
+      "Strength training app to build workouts, plan the week, log sets and weight, and track progress over time.",
+    liveUrl: "https://loft.trygve.dev/",
+    image: "/images/loft.png",
+  },
   {
     title: "Lunsjkviss.no",
     description:
@@ -284,3 +282,27 @@ export const techStack: TechStack[] = [
     url: "https://cursor.com",
   },
 ];
+
+/** Roles with no end date — currently active. */
+export function getActiveWork(): WorkExperience[] {
+  return [...workExperience]
+    .filter((job) => !job.endDate)
+    .sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
+}
+
+/** Education that has not ended yet (ongoing or upcoming). */
+export function getActiveEducation(): Education[] {
+  const now = Date.now();
+  return [...education]
+    .filter((edu) => !edu.endDate || edu.endDate.getTime() >= now)
+    .sort((a, b) => b.startDate.getTime() - a.startDate.getTime());
+}
+
+/** Newest projects by array order (newest first in data). */
+export function getRecentProjects(n = 3): Project[] {
+  return projects.slice(0, n);
+}
+
+export function isOngoingEducation(edu: Education, now = Date.now()): boolean {
+  return !edu.endDate || edu.endDate.getTime() >= now;
+}

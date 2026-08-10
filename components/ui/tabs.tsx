@@ -14,13 +14,13 @@ const TabsList = React.forwardRef<
 	<TabsPrimitive.List
 		ref={ref}
 		className={cn(
-			"relative inline-flex h-9 items-center justify-center rounded-lg bg-gradient-to-b from-secondary/50 to-secondary p-1 text-muted-foreground backdrop-blur-sm",
+			"relative inline-flex h-10 items-center justify-start rounded-lg bg-gradient-to-b from-secondary/50 to-secondary p-1 text-muted-foreground backdrop-blur-sm",
 			className
 		)}
 		{...props}
 	>
-		<div className="absolute inset-0 bg-grid-white/10" />
-		<div className="relative flex gap-1">{props.children}</div>
+		<div className="pointer-events-none absolute inset-0 bg-grid-white/10" />
+		<div className="relative flex min-w-0 items-center gap-1">{props.children}</div>
 	</TabsPrimitive.List>
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
@@ -32,7 +32,7 @@ const TabsTrigger = React.forwardRef<
 	<TabsPrimitive.Trigger
 		ref={ref}
 		className={cn(
-			"inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+			"inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 sm:px-3",
 			"data-[state=active]:bg-background/50 data-[state=active]:text-foreground data-[state=active]:shadow-[0_0_10px_rgba(59,130,246,0.25)]",
 			className
 		)}
