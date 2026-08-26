@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -118,6 +119,7 @@ function ProjectActions({ project }: { project: Project }) {
 }
 
 export default function Home() {
+	const [now] = useState(() => Date.now());
 	const reduceMotion = useReducedMotion();
 	const activeWork = getActiveWork();
 	const activeEducation = getActiveEducation();
@@ -421,7 +423,7 @@ export default function Home() {
 																	Education
 																</p>
 																{edu.startDate.getTime() >=
-																	Date.now() && (
+																	now && (
 																	<Badge>
 																		Not
 																		started
@@ -577,7 +579,7 @@ export default function Home() {
 														/>
 														<div className="space-y-2">
 															{job.startDate.getTime() >=
-																Date.now() && (
+																now && (
 																<Badge>
 																	Not started
 																</Badge>
@@ -716,7 +718,7 @@ export default function Home() {
 														/>
 														<div className="space-y-2">
 															{edu.startDate.getTime() >=
-																Date.now() && (
+																now && (
 																<Badge>
 																	Not started
 																</Badge>
