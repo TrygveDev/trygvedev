@@ -191,6 +191,16 @@ export const skills: Skill[] = [
 
 export const projects: Project[] = [
   {
+    title: "Bedre Canvas",
+    description:
+      "Chrome extension that gives Canvas LMS a cleaner, more modern design, with your next deadline pinned to the top of the dashboard.",
+    githubUrl: "https://github.com/TrygveDev/bedre-canvas",
+    moreInfoUrl: "https://trygvedev.github.io/bedre-canvas/",
+    liveUrl:
+      "https://chromewebstore.google.com/detail/bedre-canvas/bceihlocdogakenkkccccekeggahmkpl",
+    image: "https://trygvedev.github.io/bedre-canvas/assets/og.png",
+  },
+  {
     title: "Løft",
     description:
       "Strength training app to build workouts, plan the week, log sets and weight, and track progress over time.",

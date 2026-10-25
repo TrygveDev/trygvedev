@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "loft.trygve.dev",
       },
+      {
+        protocol: "https",
+        hostname: "trygvedev.github.io",
+        pathname: "/bedre-canvas/**",
+      },
     ],
   },
 };
