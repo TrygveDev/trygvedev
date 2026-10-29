@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "loft.trygve.dev",
+        hostname: "loft-app.no",
       },
       {
         protocol: "https",

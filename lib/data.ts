@@ -204,7 +204,7 @@ export const projects: Project[] = [
     title: "Løft",
     description:
       "Strength training app to build workouts, plan the week, log sets and weight, and track progress over time.",
-    liveUrl: "https://loft.trygve.dev/",
+    liveUrl: "https://loft-app.no/",
     image: "/images/loft.png",
   },
   {
